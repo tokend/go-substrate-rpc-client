@@ -32,3 +32,12 @@ func (ec *ElectionCompute) Decode(decoder scale.Decoder) error {
 func (ec ElectionCompute) Encode(encoder scale.Encoder) error {
 	return encoder.PushByte(byte(ec))
 }
+
+type OptionElectionCompute struct {
+	option
+	value ElectionCompute
+}
+
+func NewOptionElectionCompute(value ElectionCompute) OptionElectionCompute {
+	return OptionElectionCompute{option{true}, value}
+}

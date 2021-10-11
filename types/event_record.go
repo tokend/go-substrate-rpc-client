@@ -212,6 +212,92 @@ type EventRecords struct {
 	Multisig_MultisigApproval          []EventMultisigApproval                  //nolint:stylecheck,golint
 	Multisig_MultisigExecuted          []EventMultisigExecuted                  //nolint:stylecheck,golint
 	Multisig_MultisigCancelled         []EventMultisigCancelled                 //nolint:stylecheck,golint
+
+	Assets_ApprovalCancelled                        []EventAssetsApprovalCancelled
+	Assets_ApprovedTransfer                         []EventAssetsApprovedTransfer
+	Assets_AssetFrozen                              []EventAssetsAssetFrozen
+	Assets_AssetStatusChanged                       []EventAssetsAssetStatusChanged
+	Assets_AssetThawed                              []EventAssetsAssetThawed
+	Assets_Burned                                   []EventAssetsBurned
+	Assets_Created                                  []EventAssetsCreated
+	Assets_ForceCreated                             []EventAssetsForceCreated
+	Assets_Frozen                                   []EventAssetsFrozen
+	Assets_MetadataCleared                          []EventAssetsMetadataCleared
+	Assets_MetadataSet                              []EventAssetsMetadataSet
+	Assets_OwnerChanged                             []EventAssetsOwnerChanged
+	Assets_TeamChanged                              []EventAssetsTeamChanged
+	Assets_Thawed                                   []EventAssetsThawed
+	Assets_TransferredApproved                      []EventAssetsTransferredApproved
+	Bagslist_Rebagged                               []EventBagslistRebagged
+	Balances_ReserveRepatriated                     []EventBalancesReserveRepatriated
+	Bounties_BountyAwarded                          []EventBountiesBountyAwarded
+	Bounties_BountyBecameActive                     []EventBountiesBountyBecameActive
+	Bounties_BountyCanceled                         []EventBountiesBountyCanceled
+	Bounties_BountyClaimed                          []EventBountiesBountyClaimed
+	Bounties_BountyExtended                         []EventBountiesBountyExtended
+	Bounties_BountyProposed                         []EventBountiesBountyProposed
+	Bounties_BountyRejected                         []EventBountiesBountyRejected
+	Contracts_CodeRemoved                           []EventContractsCodeRemoved
+	Contracts_ContractEmitted                       []EventContractsContractEmitted
+	Contracts_Terminated                            []EventContractsTerminated
+	ElectionProviderMultiphase_ElectionFinalized    []EventElectionProviderMultiphaseElectionFinalized
+	ElectionProviderMultiphase_Rewarded             []EventElectionProviderMultiphaseRewarded
+	ElectionProviderMultiphase_SignedPhaseStarted   []EventElectionProviderMultiphaseSignedPhaseStarted
+	ElectionProviderMultiphase_Slashed              []EventElectionProviderMultiphaseSlashed
+	ElectionProviderMultiphase_SolutionStored       []EventElectionProviderMultiphaseSolutionStored
+	ElectionProviderMultiphase_UnsignedPhaseStarted []EventElectionProviderMultiphaseUnsignedPhaseStarted
+	Elections_CandidateSlashed                      []EventElectionsCandidateSlashed
+	Elections_Renounced                             []EventElectionsRenounced
+	Elections_SeatHolderSlashed                     []EventElectionsSeatHolderSlashed
+	Gilt_BidPlaced                                  []EventGiltBidPlaced
+	Gilt_BidRetracted                               []EventGiltBidRetracted
+	Gilt_GiltIssued                                 []EventGiltGiltIssued
+	Gilt_GiltThawed                                 []EventGiltGiltThawed
+	Lottery_CallsUpdated                            []EventLotteryCallsUpdated
+	Lottery_LotteryStarted                          []EventLotteryLotteryStarted
+	Lottery_TicketBought                            []EventLotteryTicketBought
+	Lottery_Winner                                  []EventLotteryWinner
+	Proxy_ProxyAdded                                []EventProxyProxyAdded
+	Staking_Chilled                                 []EventStakingChilled
+	Staking_EraPaid                                 []EventStakingEraPaid
+	Staking_Kicked                                  []EventStakingKicked
+	Staking_PayoutStarted                           []EventStakingPayoutStarted
+	Staking_Rewarded                                []EventStakingRewarded
+	Staking_Slashed                                 []EventStakingSlashed
+	Staking_StakersElected                          []EventStakingStakersElected
+	Staking_StakingElectionFailed                   []EventStakingStakingElectionFailed
+	System_Remarked                                 []EventSystemRemarked
+	Tips_NewTip                                     []EventTipsNewTip
+	Tips_TipClosed                                  []EventTipsTipClosed
+	Tips_TipClosing                                 []EventTipsTipClosing
+	Tips_TipRetracted                               []EventTipsTipRetracted
+	Tips_TipSlashed                                 []EventTipsTipSlashed
+	TransactionStorage_ProofChecked                 []EventTransactionstorageProofChecked
+	TransactionStorage_Renewed                      []EventTransactionstorageRenewed
+	TransactionStorage_Stored                       []EventTransactionstorageStored
+	Uniques_ApprovalCancelled                       []EventUniquesApprovalCancelled
+	Uniques_ApprovedTransfer                        []EventUniquesApprovedTransfer
+	Uniques_AssetStatusChanged                      []EventUniquesAssetStatusChanged
+	Uniques_AttributeCleared                        []EventUniquesAttributeCleared
+	Uniques_AttributeSet                            []EventUniquesAttributeSet
+	Uniques_Burned                                  []EventUniquesBurned
+	Uniques_ClassFrozen                             []EventUniquesClassFrozen
+	Uniques_ClassMetadataCleared                    []EventUniquesClassMetadataCleared
+	Uniques_ClassMetadataSet                        []EventUniquesClassMetadataSet
+	Uniques_ClassThawed                             []EventUniquesClassThawed
+	Uniques_Created                                 []EventUniquesCreated
+	Uniques_Destroyed                               []EventUniquesDestroyed
+	Uniques_ForceCreated                            []EventUniquesForceCreated
+	Uniques_Frozen                                  []EventUniquesFrozen
+	Uniques_Issued                                  []EventUniquesIssued
+	Uniques_MetadataCleared                         []EventUniquesMetadataCleared
+	Uniques_MetadataSet                             []EventUniquesMetadataSet
+	Uniques_OwnerChanged                            []EventUniquesOwnerChanged
+	Uniques_Redeposited                             []EventUniquesRedeposited
+	Uniques_TeamChanged                             []EventUniquesTeamChanged
+	Uniques_Thawed                                  []EventUniquesThawed
+	Uniques_Transferred                             []EventUniquesTransferred
+	Utility_ItemCompleted                           []EventUtilityItemCompleted
 }
 
 // DecodeEventRecords decodes the events records from an EventRecordRaw into a target t using the given Metadata m
@@ -284,7 +370,9 @@ func (e EventRecordsRaw) DecodeEventRecords(m *Metadata, t interface{}) error {
 		// check whether name for eventID exists in t
 		field := val.FieldByName(fmt.Sprintf("%v_%v", moduleName, eventName))
 		if !field.IsValid() {
-			return fmt.Errorf("unable to find field %v_%v for event #%v with EventID %v", moduleName, eventName, i, id)
+			//return fmt.Errorf("unable to find field %v_%v for event #%v with EventID %v", moduleName, eventName, i, id)
+			log.Error(fmt.Sprintf("unable to find field %v_%v for event #%v with EventID %v", moduleName, eventName, i, id))
+			continue
 		}
 
 		// create a pointer to with the correct type that will hold the decoded event
